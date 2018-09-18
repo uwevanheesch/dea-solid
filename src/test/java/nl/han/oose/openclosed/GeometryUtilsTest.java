@@ -29,5 +29,11 @@ public class GeometryUtilsTest {
         assertEquals(6 + Math.PI, sut.calculateArea(Arrays.asList(rectangle, circle)), 0.1);
     }
 
-
+    @Test
+    public void testLiskovNotViolated() {
+        Rectangle rectangle = new Square(2);
+        rectangle.setHeight(2);
+        rectangle.setWidth(3);
+        assertEquals(6, sut.calculateArea(Arrays.asList((Shape) rectangle)), 0);
+    }
 }
